@@ -1,3 +1,4 @@
+import time
 file=open("input5","r")
 lines=[int(line) for line in file]
 
@@ -12,6 +13,8 @@ def part1():
 	print(step)
 
 def part2():
+	step=0
+	i=0
 	while(i>=0 and i<len(lines)):
 	     temp=i
 	     i=i+lines[i]
@@ -20,4 +23,8 @@ def part2():
 	     else:
 	     	lines[temp]=lines[temp]+1
 	     step=step+1
-	print(step)
+	return step
+
+start=time.time()	
+print(part2())
+print("---%s seconds---",time.time()-start)

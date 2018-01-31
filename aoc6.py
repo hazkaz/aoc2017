@@ -1,10 +1,8 @@
 import re
 import time
-file=open("/home/hazkaz/Downloads/input6")
+file=open("input6")
 data=file.read()
-values=re.split('\s',data)[:-1]
-for index,value in enumerate(values):
-	values[index]=int(value)
+values=[int(item) for item in re.split('\s',data)[:-1]]
 
 def main():
 	def shake():
@@ -16,17 +14,40 @@ def main():
 			start=(start+1)%limit
 			values[start]=values[start]+1
 
-	ticker=0
-	check=set()
-	while True:
-		if(tuple(values) in check):
-			break
-		else:
-			check.add(tuple(values))
-		shake()
-		ticker=ticker+1
-	print(ticker)
+	def one():
+		ticker=0
+		check=set()
+		while True:
+			if(tuple(values) in check):
+				if('count' in locals()):
+					print(count)
+				count=0
+				check.remove(tuple(values))
+			else:
+				check.add(tuple(values))
+				ticker+=1
+				if('count' in locals()):
+					count+=1
+			shake()
+		print(ticker)
 
+	def two():
+		ticker={}
+		check=set()
+		while True:
+			if(tuple(values) in check):
+				ticker[tuple(values)]=0
+				print(tuple(values))
+				#print(ticker[tuple(values)])
+				ticker[tuple(values)]=0
+			else:
+				check.add(tuple(values))
+				ticker[tuple(values)]=0
+			shake()
+			
+		print(ticker)
+
+	one()
 start_time=time.time()
 
 if __name__ == '__main__':
