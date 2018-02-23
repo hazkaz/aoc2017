@@ -25,27 +25,30 @@ dir=dict({'n':np.array([1,0,0]),
 
 start=np.array([0,0,0])
 
-for directions in values:
+def distance_finder(start):
+	current=np.array([0,0,0])
+	steps=0
+	while(not np.array_equal(current,start) and steps<10):
+		mags={}
+		min=-1
+
+		distance=np.linalg.norm(converter(start)-converter(current))
+		if(distance==0):
+			break;
+		for choice in dir:
+			if(min==-1):
+				min=choice
+				print(choice,np.linalg.norm(converter(start)+converter(dir.get(min))-converter(current)))
+			else:
+				min=choice if distance<=np.linalg.norm(converter(start)+converter(dir.get(min))-converter(current)) else min
+				print(choice,np.linalg.norm(converter(start)+converter(dir.get(min))-converter(current)))
+		current-=dir.get(min)
+		steps+=1
+		print(current,start)
+	print("The number of steps",steps)
+
+for directions in values[:5]:
 	start+=dir.get(directions)
-
+	
 print(start)
-current=np.array([0,0,0])
-steps=0
-while(not np.array_equal(current,start)):
-	mags={}
-	min=-1
-
-	distance=np.linalg.norm(converter(start)-converter(current))
-	if(distance==0):
-		break;
-	for choice in dir:
-		
-		if(min==-1):
-			min=choice
-		else:
-			min=choice if distance<=np.linalg.norm(converter(start)+converter(dir.get(min))-converter(current)) else min
-	current-=dir.get(min)
-	print(current)
-	steps+=1
-print(current)
-print("The number of steps",steps)
+distance_finder(start)
