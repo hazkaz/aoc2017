@@ -1,0 +1,30 @@
+pid 0 - acquired send lock
+sending 1
+pid 0 - releasing send lock
+pid 0 - acquired rcv lock
+pid 0 - releasing rcv lock - waiting
+pid 1 - acquired send lock
+sending 1
+pid 1 - releasing send lock
+pid 1 - acquired rcv lock
+pid 1 - releasing rcv lock - first try
+pid 1 - acquired send lock
+sending 2
+pid 1 - releasing send lock
+pid 1 - acquired rcv lock
+pid 1 - releasing rcv lock - ending
+pid 1 - acquired send lock
+sending None
+pid 1 - releasing send lock
+$$$program id 1 - send count - 2
+pid 0 - acquired send lock
+sending 2
+pid 0 - releasing send lock
+pid 0 - acquired rcv lock
+pid 0 - releasing rcv lock - first try
+pid 0 - acquired send lock
+sending 0
+pid 0 - releasing send lock
+pid 0 - acquired rcv lock
+pid 0 - releasing rcv lock - first try
+$$$program id 0 - send count - 3
